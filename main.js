@@ -3,7 +3,8 @@ import gsap from "gsap";
 import VirtualScroll from "virtual-scroll";
 import "./main.scss";
 
-var ease = 0.05,
+var scrollEase = 0.05,
+    speedEase = 0.025,
     deltaY = 0,
     targetY = 0,
     scrollFactor = "ontouchstart" in document ? 3 : 0.5,
@@ -43,9 +44,9 @@ var run = function () {
         targetRotation = 0;
     }
 
-    currentY += (targetY - currentY) * ease;
-    currentSpeed += (targetSpeed - currentSpeed) * ease;
-    currentRotation += (targetRotation - currentRotation) * ease;
+    currentY += (targetY - currentY) * scrollEase;
+    currentSpeed += (targetSpeed - currentSpeed) * speedEase;
+    currentRotation += (targetRotation - currentRotation) * speedEase;
     itemHeight = $(".item").outerHeight();
 
     $(".column").each(function (i, el) {
